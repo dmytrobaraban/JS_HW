@@ -1,4 +1,5 @@
 # JS_HW
-JavaScript Homerork
+JavaScript Homework
 A-Level
 Front-End
+Dmytro Baraban
