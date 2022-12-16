@@ -3,7 +3,7 @@
 /* 
 
 const citiesAndCountries = {
-  Київ: 'Украина',
+  Київ: 'Україна',
   'Нью-Йорк': 'США',
   Амстердам: 'Нідерланди',
   Берлін: 'Німеччина',
@@ -13,8 +13,8 @@ const citiesAndCountries = {
 };
 
 const result = [];
- for (const key in citiesAndCountries){
- result[result.length] = `${key} - це ${citiesAndCountries[key]}`;
+for (const key in citiesAndCountries){
+  result[result.length] = `${key} - це ${citiesAndCountries[key]}`;
 }
 
 console.log(result) 
