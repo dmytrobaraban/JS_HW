@@ -48,107 +48,13 @@ if (Number.isInteger(reamsOfPaperPerPeriod) === false){
 
 // 4.
 
-
 /*
-
-// Варіант 1.
-
-function roomAndFloorNumber(roomNumber){
-    const roomsOnFloor = 3;
-    const floors = 9;
-    const roomOnPorch = roomsOnFloor * floors; // вираховуємо кількість квартир на підїзд
-    let countOfPorch = 0;
-    let countOfFloor = 0;
-    for (let i = 1; i <= roomNumber; i++){ // вичислюємо підїзд
-      if (i % roomOnPorch === 0){
-        countOfPorch += 1
-      }
-    }
-    const roomsRest = roomNumber - (countOfPorch * roomOnPorch) // вичислюємо залишок квартир для точнішого вирахування підїзду 
-    if (roomsRest >= 1 && roomsRest <= 3){
-      countOfPorch += 1;
-      countOfFloor = 1;
-    } else if (roomsRest >= 4 && roomsRest <= 6) {
-      countOfPorch += 1;
-      countOfFloor = 2;
-    } else if  (roomsRest >= 7 && roomsRest <= 9) {
-      countOfPorch += 1;
-      countOfFloor = 3;
-    } else if  (roomsRest >= 10 && roomsRest <= 12) {
-      countOfPorch += 1;
-      countOfFloor = 4;
-    } else if  (roomsRest >= 11 && roomsRest <= 15) {
-      countOfPorch += 1;
-      countOfFloor = 5;
-    } else if  (roomsRest >= 16 && roomsRest <= 18) {
-      countOfPorch += 1;
-      countOfFloor = 6;
-    } else if  (roomsRest >= 19 && roomsRest <= 21) {
-      countOfPorch += 1;
-      countOfFloor = 7;
-    } else if  (roomsRest >= 20 && roomsRest <= 24) {
-      countOfPorch += 1;
-      countOfFloor = 8;
-    } else if  (roomsRest >= 25 && roomsRest <= 27) {
-      countOfPorch += 1;
-      countOfFloor = 9;
-    } else if (roomsRest === 0){
-      countOfFloor = 9;
-    }
-    const porch = countOfPorch;
-    const floor = countOfFloor;
-    console.log(`The room in ${porch} porch and on ${floor} floor.`)
-  }
-
-roomAndFloorNumber(456)
-
-*/
-
-/*
-
-// Варіант 2.
-
-function roomAndFloorNumber(roomNumber){
-    const roomsOnFloor = 3;
-    const floors = 9;
-    const roomOnPorch = roomsOnFloor * floors; // вираховуємо кількість квартир на підїзд
-    let countOfPorch = 0;
-    let countOfFloor = 0;
-    for (let i = 1; i <= roomNumber; i++){ // вичислюємо підїзд
-      if (i % roomOnPorch === 0){
-        countOfPorch += 1
-      }
-    }
-    let roomsRest = roomNumber - (countOfPorch * roomOnPorch) // вичислюємо залишок квартир для точнішого вирахування підїзду 
-    if (roomsRest >= 1) {
-      countOfPorch += 1;
-      const floorOfRoom = roomsRest / roomsOnFloor;
-      if (Number.isInteger(floorOfRoom)){
-       countOfFloor = floorOfRoom;   
-      } else {
-       countOfFloor = Number( Math.trunc(flooOfRoom) + 1);
-      }
-    } else if (roomsRest === 0) {
-      countOfFloor = 9;
-    } 
-    const porch = countOfPorch;
-    const floor = countOfFloor;
-    console.log(`The room in ${porch} porch and on ${floor} floor.`)
-  }
-
-roomAndFloorNumber(333)
-
-*/
-
-/*
-
-// Варіант 3.
 
 function roomAndFloorNumber(roomNumber){
     const roomsOnFloor = 3;
     const floors = 9;
     let floor = 0;
-    const roomOnPorch = roomsOnFloor * floors; // вираховуємо кількість квартир на підїзд
+    const roomOnPorch = roomsOnFloor * floors;
     let porch = roomNumber / roomOnPorch;
     if (!Number.isInteger(porch)){
       floor = ( roomNumber - ( Number( Math.trunc(porch) ) * roomOnPorch ) ) / roomsOnFloor;
@@ -166,6 +72,7 @@ roomAndFloorNumber(444)
 */
 
 // 5.
+
 /*
 
 function buildPiramide(mediana){
