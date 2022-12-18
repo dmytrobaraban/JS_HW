@@ -52,20 +52,21 @@ const namesOfDays = {
 
 function getNameOfDay(lang, day) {
   if (day === 0 || day > 7) {
-    alert ('Error! Enter a day number from 1 to 7 !')
+   return alert ('Error! Enter a day number from 1 to 7')
   }
   if (lang === 'ua') {
     day = namesOfDays.ua[day - 1];
-  } else if (lang === 'en')
+  } else if (lang === 'en') {
     day = namesOfDays.en[day - 1];
-   // lang === 'ua' ? day = namesOfDays.ua[day - 1] : day = namesOfDays.en[day - 1]; // version 2
+  } else {
+    return alert ('Error! Please enter type ua or en');
+  }
   return day;
 }
 
 console.log(getNameOfDay('ua', 7))
 
 */
-
 
 /*
 
