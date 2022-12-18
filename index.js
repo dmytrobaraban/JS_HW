@@ -65,3 +65,22 @@ function getNameOfDay(lang, day) {
 console.log(getNameOfDay('ua', 7))
 
 */
+
+
+/*
+
+// Task_4
+
+function sumOfLessNumbers(arr){
+  arr = Array.from(new Set(arr));
+  if (arr.length < 4) {
+    return console.log('The array has less than four elements');
+  }
+  arr = arr.filter(num => Number.isInteger(num) && Math.sign(num) !== -1);
+  arr.sort((a, b) => a - b);
+  return arr[0] + arr[1];
+}
+
+console.log(sumOfLessNumbers([12, 12.8, 12, 4, 6, -8, 9, 5]))
+
+*/
