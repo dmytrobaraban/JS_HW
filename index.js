@@ -94,11 +94,11 @@ function getIntNumFromBinary(arr){
   arr.reverse();
   let result = null;
   for (let i = 0; i < arr.length; i++){
-    result += arr[i] * Math.pow(2, i);
+   result += arr[i] * Math.pow(2, i);
   }
-  return result;
+  return console.log(`Testing: [${arr.reverse()}] ==> ${result}`);
 }
-
-console.log(getIntNumFromBinary([1, 1, 1, 0, 0, 1]))
+const arr = [1, 1, 1, 0, 0, 1];
+getIntNumFromBinary(arr);
 
 */
