@@ -85,3 +85,20 @@ function sumOfLessNumbers(arr){
 console.log(sumOfLessNumbers([12, 12.8, 12, 4, 6, -8, 9, 5]))
 
 */
+
+/*
+
+// Task 5
+
+function getIntNumFromBinary(arr){
+  arr.reverse();
+  let result = null;
+  for (let i = 0; i < arr.length; i++){
+    result += arr[i] * Math.pow(2, i);
+  }
+  return result;
+}
+
+console.log(getIntNumFromBinary([1, 1, 1, 0, 0, 1]))
+
+*/
