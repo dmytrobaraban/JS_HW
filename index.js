@@ -1,88 +1,175 @@
-// 1.
+const emplyeeArr = [
+    {
+        id: 1,
+        name: 'Денис',
+        surname: 'Хрущ',
+        salary: 1010, 
+        workExperience: 10, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 2,
+        name: 'Сергей',
+        surname: 'Войлов',
+        salary: 1200, 
+        workExperience: 12, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 3,
+        name: 'Татьяна',
+        surname: 'Коваленко',
+        salary: 480, 
+        workExperience: 3, /// стаж работы (1 = один месяц)
+        isPrivileges: true, /// льготы
+        gender: 'female'
+    },
+    {
+        id: 4,
+        name: 'Анна',
+        surname: 'Кугир',
+        salary: 2430, 
+        workExperience: 20, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'female'
+    },
+    {
+        id: 5,
+        name: 'Татьяна',
+        surname: 'Капустник',
+        salary: 3150, 
+        workExperience: 30, /// стаж работы (1 = один месяц)
+        isPrivileges: true, /// льготы
+        gender: 'female'
+    },
+    {
+        id: 6,
+        name: 'Станислав',
+        surname: 'Щелоков',
+        salary: 1730, 
+        workExperience: 15, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 7,
+        name: 'Денис',
+        surname: 'Марченко',
+        salary: 5730, 
+        workExperience: 45, /// стаж работы (1 = один месяц)
+        isPrivileges: true, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 8,
+        name: 'Максим',
+        surname: 'Меженский',
+        salary: 4190, 
+        workExperience: 39, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 9,
+        name: 'Антон',
+        surname: 'Завадский',
+        salary: 790, 
+        workExperience: 7, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+    {
+        id: 10,
+        name: 'Инна',
+        surname: 'Скакунова',
+        salary: 5260, 
+        workExperience: 49, /// стаж работы (1 = один месяц)
+        isPrivileges: true, /// льготы
+        gender: 'female'
+    },
+    {
+        id: 11,
+        name: 'Игорь',
+        surname: 'Куштым',
+        salary: 300, 
+        workExperience: 1, /// стаж работы (1 = один месяц)
+        isPrivileges: false, /// льготы
+        gender: 'male'
+    },
+];
 
-/*
+// Exercise 1
 
-for (let i = 1; i <= 10; i++){
-  if (i % 2 === 0 && i % 3 !== 0 ){
-    console.log('Fiz');
-  } else if (i % 3 === 0){
-    console.log('FizBuz');
-  } else {
-    console.log('Buz');
-  }
-}
+// Створення функції-конструктору зі всіма властивостями об'єкта employee із масиву emplyeeArr.
 
-*/
+const Emploee = function(employee) { 
+   this.id = employee.id;
+   this.name = employee.name;
+   this.surname = employee.surname;
+   this.salary = employee.salary;
+   this.workExperience = employee.workExperience;
+   this.isPrivileges = employee.isPrivileges;
+   this.gender = employee.gender;
+};
 
-// 2.
+// Exercise 2
 
-/*
+// Додавання функції-конструктору метод getFullName який повертає повне ім'я починаючи з прізвища у вигляді рядку.
 
-const fact = 7
-let result = 1;
-for (let i = 1; i <= fact; i++){
-  result *= i
-}
+Emploee.prototype.getFullName = function() {
+     return `${this.surname} ${this.name}`;
+   };
 
-console.log(res)
+// Exercise 3
 
-*/
+// Створення стрілочної функції (arrow function) в якому будуть об'єкти створені функцією-конструктором Emploee.
 
-// 3.
+const createEmployesFromArr = (arr) => { 
+   const employeesList = [];
 
-/*
+   for(const employee of arr) {
+      const employeer = new Emploee(employee);
+      employeesList.push(employeer);
+   }
 
-const sheetsInReamPaper = 500;
-const consumptionPerWeek = 1200;
-const weeksAmount = 8;
-const reamsOfPaperPerPeriod = consumptionPerWeek * weeksAmount / sheetsInReamPaper;
-const ifResultNotInteger = Number( Math.trunc(reamsOfPaperPerPeriod) + 1);
+   return employeesList;
+};
 
-if (Number.isInteger(reamsOfPaperPerPeriod) === false){
-  console.log(ifResultNotInteger);
-} else {
-  console.log(reamsOfPaperPerPeriod);
-}
+const emplyeeConstructArr = createEmployesFromArr(emplyeeArr);
 
-*/
+// console.log(createEmployesFromArr(emplyeeArr)) // для перевірки
 
-// 4.
+// Exercise 4
 
-/*
+// Створення стрілочної функції, яка повертає масив зі всіма повними іменами кожного employee, що знаходяться в emplyeeConstructArr.
 
-function roomAndFloorNumber(roomNumber){
-    const roomsOnFloor = 3;
-    const floors = 9;
-    let floor = 0;
-    const roomOnPorch = roomsOnFloor * floors;
-    let porch = roomNumber / roomOnPorch;
-    if (!Number.isInteger(porch)){
-      floor = ( roomNumber - ( Number( Math.trunc(porch) ) * roomOnPorch ) ) / roomsOnFloor;
-    } if (!Number.isInteger(floor)) {
-      floor = Number( Math.trunc(floor) ) + 1;
-    }
-    if (!Number.isInteger(porch)){
-      porch = Number( Math.trunc(porch) + 1)
-    }
-    console.log(`The room in ${porch} porch and on ${floor} floor.`)
-  }
+const getFullNamesFromArr = (arr) => {
+     const employeersFullNameList = [];
+  
+     for(const employee of arr) {
+       employeersFullNameList.push(employee.getFullName());
+     }
+     return employeersFullNameList;
+};
 
-roomAndFloorNumber(444)
+// console.log(getFullNamesFromArr(emplyeeConstructArr)) // для перевірки
 
-*/
+// Exercise 5
 
-// 5.
+// Створення стрілочної функції, яка повертає середнє значення зарплати всіх employee.
 
-/*
+const getMiddleSalary = (arr) => {
+   const salaryOfAllemployee = [];
+   let count = null;
+   for(const employee of arr) {
+     salaryOfAllemployee.push(employee.salary);
+   }
+   for(const employeeSalary of salaryOfAllemployee){
+       count += employeeSalary / salaryOfAllemployee.length;
+   }
+   return Math.floor(count);
+};
 
-function buildPiramide(mediana){
-  for (let i = 0; i < mediana; i++){
-    let dash = '-'.repeat(mediana - i - 1);
-    let thorp = '#'.repeat(i * 2 + 1);
-    console.log(`${dash}${thorp}${dash}`)
-  }
-}
-
-buildPiramide(6)
-
-*/
+// console.log(getMiddleSalary(emplyeeConstructArr)) // для перевірки
