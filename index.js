@@ -173,3 +173,51 @@ const getMiddleSalary = (arr) => {
 };
 
 // console.log(getMiddleSalary(emplyeeConstructArr)) // для перевірки
+
+// Exercise 6
+
+// Створення стрілочної функції, яка вибирає випадкового працівника із масиву emplyeeConstructArr.
+
+const getRandomEmployee = (arr) => {
+  const getRandom = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+  }
+  return arr[getRandom(0, arr.length)]
+}
+
+// console.log('Exercise 6 ==>', getRandomEmployee(emplyeeConstructArr))// для перевірки
+
+// Exercise 7
+
+// Створити дескриптор із властивістю fullinfo, який буде записувати всі властивості
+// передані йому в екземпляр з якого він викликається. І видавати всі властивості у вигляді рядку.
+
+const employeeObj = new Emploee(emplyeeArr[0]);
+
+Object.defineProperty(employeeObj, 'fullInfo', {
+  get() {
+    const arr = [];
+    for (const key in employeeObj){
+      if (typeof employeeObj[key] !== 'function'){
+      arr.push(`${key} - ${employeeObj[key]}`)
+      }
+    }
+    return arr.join(', ');
+  },
+   set(properties) {
+      for (const property in properties) {
+        if (this.hasOwnProperty(property)) {
+          this[property] = properties[property];
+        }
+      }
+    }
+  }
+);
+
+/* 
+console.log(employeeObj);
+employeeObj.fullInfo = {name: 'Вася', salary: 9000, email: 'ex@mail.ua'};
+console.log(employeeObj.fullInfo); // для перевірки
+*/ 
