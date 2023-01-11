@@ -40,3 +40,32 @@ getUpdatedArr(5);
 getUpdatedArr({name: 'Vasya'});
 getUpdatedArr();
 getUpdatedArr(4);
+
+// Exercise 3
+
+// Содать функцию , которая при каждом вызове будет показывать разницу в секундах между временем когда ее вызывали последний раз и теперешним. 
+// Вызываем первый раз, то ретерним строку 'Enabled'. Запрещается использовать глобальные переменные как хранилище значений. 
+
+const getInterval = () => {
+  let gettingTime = null;
+  return () => {
+   if (!gettingTime){
+     gettingTime = Date.now();
+     return 'Enabled';
+   }
+    const currentTime = Date.now();
+    const timeDifference = Math.round((currentTime - gettingTime) / 1000);
+    gettingTime = currentTime;
+    return timeDifference;
+  };
+};
+
+const getTime = getInterval();
+
+console.log(getTime());
+setTimeout( () => {
+  console.log(getTime());
+}, 2000);
+setTimeout( () => {
+  console.log(getTime());
+}, 5000);
