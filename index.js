@@ -116,11 +116,7 @@ console.log(Student.listOfStudents);
 // Exersise 2
 
 class CustomString {
-  
-  constructor(string){
-    this.string = string;
-  }
-  
+    
   reverse(string){
     let result = '';
     for (let i = 0; i < string.length; i++){
