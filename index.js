@@ -69,3 +69,25 @@ setTimeout( () => {
 setTimeout( () => {
   console.log(getTime());
 }, 5000);
+
+// Exercise 4
+
+// Создать таймер обратного отсчета, который будет в console выодить время в формате MM:SS. 
+// Где MM - количество минут, SS - количество секунд. При этом когда закончится время, нужно вывести в console строку "Timer End".
+
+const SECONDS = 1;
+
+const timer = (timeInSeconds) => {
+  const intervalId = setInterval(() => {
+    if (timeInSeconds === 0) {
+      console.log('Timer End');
+      clearInterval(intervalId);
+      return;
+    }
+    const minutes = Math.floor(timeInSeconds / 60).toString();
+    const seconds = (timeInSeconds-- % 60).toString();
+    console.log(`${minutes.padStart(2, '0')} : ${seconds.padStart(2, '0')}`)
+  }, SECONDS * 1000)
+}
+
+timer(121)
