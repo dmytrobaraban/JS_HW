@@ -68,8 +68,8 @@ const arr = [
 ];
 
 function insertIntoarr(obj, objId) {
- const searhId = arr.indexOf(arr.find(e => e.id === objId));
- return arr.splice(searhId, 0, obj);
+ const searchId = arr.indexOf(arr.find(e => e.id === objId));
+ return arr.splice(searchId, 0, obj);
 }
 
 console.log('Excercise 4')
