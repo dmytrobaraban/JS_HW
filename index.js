@@ -1,88 +1,81 @@
-// 1.
+// Excercise 1
 
-/*
+// Создать функцию которая будет удалять людей из массива по индексу, который мы передадим параметром.
 
-for (let i = 1; i <= 10; i++){
-  if (i % 2 === 0 && i % 3 !== 0 ){
-    console.log('Fiz');
-  } else if (i % 3 === 0){
-    console.log('FizBuz');
-  } else {
-    console.log('Buz');
-  }
+(() => {
+const arr = ['Vasya', 'Petya', 'Alexey'];
+
+function deleteElementInArr(arr, numberOfElement){
+  arr.splice(numberOfElement, 1);
+  return arr;
 }
 
-*/
+console.log('Excercise 1', deleteElementInArr(arr, 1));
+})();
+// Excercise 2
 
-// 2.
+// Создать функцию которая вернет все ключи обьекта переданного параметром.
+(() => {
+const obj = { name: 'Vasya', age: 1}
 
-/*
-
-const fact = 7
-let result = 1;
-for (let i = 1; i <= fact; i++){
-  result *= i
+function getAllKeys(obj) {
+  return Object.keys(obj);
 }
 
-console.log(res)
+console.log('Excercise 2', getAllKeys(obj))
+})();
 
-*/
+// Excercise 3
 
-// 3.
+// Создать функцию которая вернет все значения объекта переданного параметром.
 
-/*
+(() => {
+const obj = { name: 'Vasya', age: 1}
 
-const sheetsInReamPaper = 500;
-const consumptionPerWeek = 1200;
-const weeksAmount = 8;
-const reamsOfPaperPerPeriod = consumptionPerWeek * weeksAmount / sheetsInReamPaper;
-const ifResultNotInteger = Number( Math.trunc(reamsOfPaperPerPeriod) + 1);
-
-if (Number.isInteger(reamsOfPaperPerPeriod) === false){
-  console.log(ifResultNotInteger);
-} else {
-  console.log(reamsOfPaperPerPeriod);
+function getAllValues(obj) {
+  return Object.values(obj);
 }
 
-*/
+console.log('Excercise 3', getAllValues(obj));
+})();
 
-// 4.
+// Excercise 4
 
-/*
+// Cодать функцию,где мы первым параметром передадим объект с новым кандидатом,
+// а вторым параметром - id любого кондидата в массиве condidateArr. 
+// Функция должна будет вставить кандидата переданного через первый параметр в массив
+// перед кондидатом у которого id равно тому что передали во-втором параметре.
 
-function roomAndFloorNumber(roomNumber){
-    const roomsOnFloor = 3;
-    const floors = 9;
-    let floor = 0;
-    const roomOnPorch = roomsOnFloor * floors;
-    let porch = roomNumber / roomOnPorch;
-    if (!Number.isInteger(porch)){
-      floor = ( roomNumber - ( Number( Math.trunc(porch) ) * roomOnPorch ) ) / roomsOnFloor;
-    } if (!Number.isInteger(floor)) {
-      floor = Number( Math.trunc(floor) ) + 1;
-    }
-    if (!Number.isInteger(porch)){
-      porch = Number( Math.trunc(porch) + 1)
-    }
-    console.log(`The room in ${porch} porch and on ${floor} floor.`)
-  }
-
-roomAndFloorNumber(444)
-
-*/
-
-// 5.
-
-/*
-
-function buildPiramide(mediana){
-  for (let i = 0; i < mediana; i++){
-    let dash = '-'.repeat(mediana - i - 1);
-    let thorp = '#'.repeat(i * 2 + 1);
-    console.log(`${dash}${thorp}${dash}`)
-  }
+const obj = {
+    id: 3,
+    name: 'Vasya'
 }
 
-buildPiramide(6)
+const secondObj = {
+    id: 4,
+    name: 'Katya'
+}
 
-*/
+const arr = [
+    {
+        id: 1,
+        name: 'Kolya'
+    },
+    {
+        id: 2,
+        name: 'Petya'
+    },
+];
+
+function insertIntoarr(obj, objId) {
+ const searhId = arr.indexOf(arr.find(e => e.id === objId));
+ return arr.splice(searhId, 0, obj);
+}
+
+console.log('Excercise 4')
+
+insertIntoarr(obj, 2)
+console.log(arr)
+
+insertIntoarr(secondObj, 1)
+console.log(arr)
