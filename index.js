@@ -102,8 +102,13 @@ class Student {
         b.schoolPoint > a.schoolPoint ? 1 : 0;
       }
     });
-    studentsList.slice(0, 5).forEach((e) => (e.isSelfPayment = false));
-    studentsList.slice(5).forEach((e) => (e.isSelfPayment = true));
+    for (let i = 0; i < studentsList.length; i++){
+      if (i <= 4) {
+        studentsList[i].isSelfPayment = false;
+      } else {
+        studentsList[i].isSelfPayment = true;
+      }
+    }
   }
 }
 
