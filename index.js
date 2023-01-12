@@ -83,7 +83,7 @@ const studentArr = [
 class Student {
   constructor(enrolee) {
     this.id = Student.ID++;
-    this.isSelfPayment = true;
+    this.isSelfPayment = null;
     Object.assign(this, enrolee);
 
     Student.listOfStudents.push(this);
@@ -103,11 +103,7 @@ class Student {
       }
     });
     for (let i = 0; i < studentsList.length; i++){
-      if (i <= 4) {
-        studentsList[i].isSelfPayment = false;
-      } else {
-        studentsList[i].isSelfPayment = true;
-      }
+      i <= 4 ? studentsList[i].isSelfPayment = false : studentsList[i].isSelfPayment = true;
     }
   }
 }
