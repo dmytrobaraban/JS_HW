@@ -84,9 +84,9 @@ const timer = (timeInSeconds) => {
       clearInterval(intervalId);
       return;
     }
-    const minutes = Math.floor(timeInSeconds / 60).toString();
-    const seconds = (timeInSeconds-- % 60).toString();
-    console.log(`${minutes.padStart(2, '0')} : ${seconds.padStart(2, '0')}`)
+    const minutes = Math.floor(timeInSeconds / 60).toString().padStart(2, '0');
+    const seconds = (timeInSeconds-- % 60).toString().padStart(2, '0');
+    console.log(minutes + ' : ' + seconds)
   }, SECONDS * 1000)
 }
 
