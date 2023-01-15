@@ -79,3 +79,63 @@ console.log(arr)
 
 insertIntoarr(secondObj, 1)
 console.log(arr)
+
+// Excercise 5
+
+// Создайте класс Condidate который будет принимать параметром объект из массива condidateArr.
+// Добавить метод с именем state который вернет штат в котором живает наш кондидат.
+// Информация о штате находится в свойстве address и это третья запись после запятой.
+
+class Condidate {
+  constructor(condidate) {
+    this.state = this.state(condidate.address);
+  }
+  state(address) {
+    return address.split(',')[2];
+  }
+}
+
+const condidat = new Condidate(condidateArr[2]);
+
+console.log(condidat.state);
+
+// Excercise 6
+
+// Создать функцию которая выведет массив с названиями фирм взятыми из св-ва company.
+// Если фирмы повторяются в массиве, то удалить дубликаты. Все так же используем массив candidateArr
+
+function companysOfCondidates(arr) {
+  const arrOfCompanys = [];
+  arr.forEach((item) => arrOfCompanys.push(item.company));
+  // const condidate = arr.map((item) => item.company);
+  // arrOfCompanys.push(...condidate);
+  const filteredArr = arrOfCompanys.filter(
+    (item, index) => index === arrOfCompanys.indexOf(item)
+  );
+  return filteredArr;
+}
+
+console.log(companysOfCondidates(condidateArr));
+
+// Excercise 7
+
+//Создать функцию которая выведет мне массив id всех кондидатов, которые были зарагестрированны
+// в том же году что и год указанный в параметре.
+
+function idWhoRegistered(arr, year) {
+  const newArr = [];
+  arr.forEach((item) => {
+    item.registered = new Date(item.registered).getFullYear();
+    newArr.push(item);
+  });
+
+  const idCondidates = [];
+
+  newArr.forEach((item) => {
+    item.registered === year && idCondidates.push(item._id);
+  });
+
+  return idCondidates;
+}
+
+console.log(idWhoRegistered(condidateArr, 2014));
