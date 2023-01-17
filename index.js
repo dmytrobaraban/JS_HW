@@ -166,3 +166,22 @@ const arrOfGender = (arr, gender) => {
 };
 
 console.log('Exercise 9', arrOfGender(condidateArr, 'female'));
+
+// Excercise 10
+
+// Создать функцию reduce, join самому как на занятии создавали forEach, map, find, filter и т.д.
+
+Array.prototype.cJoin = function (separator = ',') {
+  let result = '';
+  for (let i = 0; i < this.length; i++) {
+    result += this[i];
+    if (i < this.length - 1) {
+      result += separator;
+    }
+  }
+  return result;
+};
+
+const someArr = ['code', 'wars', 'js'];
+
+console.log(someArr.cJoin());
