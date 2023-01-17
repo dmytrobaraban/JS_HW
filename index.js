@@ -139,3 +139,30 @@ function idWhoRegistered(arr, year) {
 }
 
 console.log(idWhoRegistered(condidateArr, 2014));
+
+// Excercise 8
+
+// Создать функцию которая вернет массив с экземплярами - кандидатами, отфильтрованных по кол-ву непрочитанных сообщений.
+// Смотрим св-во greeting, там указанно это количество в строке, Вам надо достать это число из строки и сверять
+// с тем что в параметер вашей функции. Все так же используем массив candidateArr
+
+const filteredByUnreadCount = (arr, count) => {
+  const countOfunreadmessages = (string) => Number(string.split(' ')[5]);
+  return arr.filter((item) => countOfunreadmessages(item.greeting) === count);
+};
+
+console.log('Excercise 8', filteredByUnreadCount(condidateArr, 8));
+
+// Excercise 9
+
+// Создать функцию которая вернет массив по свойству gender. Все так же используем массив candidateArr
+
+const arrOfGender = (arr, gender) => {
+  const newArr = [];
+  arr.forEach((item) => {
+    item.gender === gender && newArr.push(item);
+  });
+  return newArr
+};
+
+console.log('Exercise 9', arrOfGender(condidateArr, 'female'));
