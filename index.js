@@ -171,20 +171,6 @@ console.log('Exercise 9', arrOfGender(condidateArr, 'female'));
 
 // Создать функцию reduce, join самому как на занятии создавали forEach, map, find, filter и т.д.
 
-Array.prototype.cJoin = function (separator = ',') {
-  let result = '';
-  for (let i = 0; i < this.length; i++) {
-    result += this[i];
-    if (i < this.length - 1) {
-      result += separator;
-    }
-  }
-   return result;
-};
-
-// OR ==> 
-
-/*
 Array.prototype.cJoin = function (callback) {
   let result = '';
   const defaultSeparator = ',';
@@ -195,13 +181,43 @@ Array.prototype.cJoin = function (callback) {
     }
     result += this[i];
     if (i < this.length - 1) {
-      result += callback;
+      result += callback(this[i]);
     }
   }
   return result;
+};
+
+// OR ==> 
+
+/*
+Array.prototype.cJoin = function (separator = ',') {
+  let result = '';
+  for (let i = 0; i < this.length; i++) {
+    result += this[i];
+    if (i < this.length - 1) {
+      result += separator;
+    }
+  }
+   return result;
 };
 */
 
 const someArr = ['code', 'wars', 'js'];
 
-console.log(someArr.cJoin());
+console.log('Excercise 10 | cJoin ==>', someArr.cJoin());
+
+const arrForReduce = [1, 2, 3, 4];
+
+Array.prototype.cReduce = function (callback) {
+  let acc = 0;
+  for (let i = 0; i < this.length; i++) {
+    callback((acc = acc + this[i]));
+  }
+  return acc;
+};
+
+console.log(
+  'Excercise 10 | cReduce ==>',
+  arrForReduce.cReduce((acc, item) => item + acc)
+);
+
