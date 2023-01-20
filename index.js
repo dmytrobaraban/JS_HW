@@ -1,88 +1,99 @@
-// 1.
+// JS_HW 7
 
-/*
+// Excercise 1
+// Создать поиск кандидатов в массиве candidateArr по номеру телефона.
+// Номер телефона может быть указан не полностью и в любом формате.
 
-for (let i = 1; i <= 10; i++){
-  if (i % 2 === 0 && i % 3 !== 0 ){
-    console.log('Fiz');
-  } else if (i % 3 === 0){
-    console.log('FizBuz');
-  } else {
-    console.log('Buz');
-  }
-}
+// Маски в інпуті для номеру телефону або так .replace(/\W/g, '') .replace(/\D/g, '')
+// \w тільки символи \W не символи ; \D тільки числа \d не числа. --= у випадку для реплейс
+// і на include ==>
 
-*/
+const FORMAT_PHONE_NUMBER = new RegExp(/\D/gm);
 
-// 2.
+const searchCandidatesByPhoneNumber = (phone) => {
+  const newArr = [...condidateArr];
+  const formatInputPhone = phone.replace(FORMAT_PHONE_NUMBER, '');
+  newArr.forEach((item) => {
+    item.phone = item.phone.replace(FORMAT_PHONE_NUMBER, '');
+    newArr.push(item);
+  });
 
-/*
+  return newArr.filter((item) => {
+    return item.phone.includes(formatInputPhone);
+  });
+};
+console.log('Excercise 1');
 
-const fact = 7
-let result = 1;
-for (let i = 1; i <= fact; i++){
-  result *= i
-}
+console.log(searchCandidatesByPhoneNumber('43'));
+console.log(searchCandidatesByPhoneNumber('+1(86'));
+console.log(searchCandidatesByPhoneNumber('+1 (869) 408-3982'));
 
-console.log(res)
+// Excercise 2
 
-*/
+// Создать функцию которая найдет кандидата по  _id и вернет его из массива candidatesArr
+// c отформатированной датой регистрации(поле registred).Дата должна иметь формат DD / MM / YY.
 
-// 3.
+const getCandidateById = (id) => {
+  const newArr = [...condidateArr];
+  const filteredArray = newArr.filter((item) => {
+    return item._id.includes(id);
+  });
+  const date = new Date(filteredArray[0].registered);
+  const day = date.getDay();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  filteredArray[0].registered = `${day}/${month}/${year}`;
+  return filteredArray[0];
+};
 
-/*
+console.log('Excercise 2', getCandidateById('5e216bc9a6059760578aefa4'));
 
-const sheetsInReamPaper = 500;
-const consumptionPerWeek = 1200;
-const weeksAmount = 8;
-const reamsOfPaperPerPeriod = consumptionPerWeek * weeksAmount / sheetsInReamPaper;
-const ifResultNotInteger = Number( Math.trunc(reamsOfPaperPerPeriod) + 1);
+// Exercise 3
+// Написать функцию которая будет сортировать массив canidatesArr по количеству денег
+// лежащих на балансе (смотрим свойство balance)  в том порядке, в котором ей укажут в аргементе sortBy.
+// Если параметр не был передан, то вернет массив в первоначальном состоянии.
 
-if (Number.isInteger(reamsOfPaperPerPeriod) === false){
-  console.log(ifResultNotInteger);
-} else {
-  console.log(reamsOfPaperPerPeriod);
-}
+const sortCandidatesArr = (sortBy) => {
+  const newArr = [...condidateArr];
+  if (sortBy === 'asc')
+    newArr.sort((a, b) => {
+      return (
+        a.balance.slice(1).replace(',', '') -
+        b.balance.slice(1).replace(',', '')
+      );
+    });
 
-*/
+  if (sortBy === 'desc')
+    newArr.sort((a, b) => {
+      return (
+        b.balance.slice(1).replace(',', '') -
+        a.balance.slice(1).replace(',', '')
+      );
+    });
 
-// 4.
+  return newArr;
+};
 
-/*
+console.log('Excercise 3', sortCandidatesArr('desc'));
 
-function roomAndFloorNumber(roomNumber){
-    const roomsOnFloor = 3;
-    const floors = 9;
-    let floor = 0;
-    const roomOnPorch = roomsOnFloor * floors;
-    let porch = roomNumber / roomOnPorch;
-    if (!Number.isInteger(porch)){
-      floor = ( roomNumber - ( Number( Math.trunc(porch) ) * roomOnPorch ) ) / roomsOnFloor;
-    } if (!Number.isInteger(floor)) {
-      floor = Number( Math.trunc(floor) ) + 1;
+// Exercise 4
+// Написать функцию, которая вернет объект в котором название ключей будут цвета глаз, а значением -
+// массив с кандидатами имеющие такой цвет глаз. При этом нельзя самому указывать первоначальный объект
+// с возможными вариантами цветами глаз, а сгенерировать их на основе массива с кандидатами,
+// то есть пройтись по массиву candidatesArr и брать смотреть на свойство eyeColor и добавлять
+// значение цвета глаз кандидата как ключ объекта,
+// если такого ключа не существует, ну и не добавлять - если  одноименный ключ уже существует.
+
+const getEyeColorMap = () => {
+  const newArr = [...condidateArr];
+  const obj = {};
+  newArr.forEach((item) => {
+    if (!obj.hasOwnProperty(item.eyeColor)) {
+      obj[item.eyeColor] = [];
     }
-    if (!Number.isInteger(porch)){
-      porch = Number( Math.trunc(porch) + 1)
-    }
-    console.log(`The room in ${porch} porch and on ${floor} floor.`)
-  }
+    obj[item.eyeColor].push(item);
+  });
+  return obj;
+};
 
-roomAndFloorNumber(444)
-
-*/
-
-// 5.
-
-/*
-
-function buildPiramide(mediana){
-  for (let i = 0; i < mediana; i++){
-    let dash = '-'.repeat(mediana - i - 1);
-    let thorp = '#'.repeat(i * 2 + 1);
-    console.log(`${dash}${thorp}${dash}`)
-  }
-}
-
-buildPiramide(6)
-
-*/
+console.log('Excercise 4', getEyeColorMap());
